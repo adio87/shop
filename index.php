@@ -94,6 +94,21 @@ function generateRandomDate($y = 2012, $v = 1) {
 //$stmt = $dbh->prepare($query);
 //$stmt->execute();
 
+//1.) Посчитать сколько товаров в штуках купили активные пользователи себе сами. Т.е необходимо получит ответ вида: " id пользователя, login пользователя, к-во покупок в штуках".
+//$query = "SELECT im_users.id, im_users.login, COUNT(im_orders.prod_id) AS item_count FROM im_users LEFT OUTER JOIN im_orders ON (im_users.id=user_id) WHERE im_users.flag=1 AND im_orders.partn_id=0 GROUP BY im_users.id, im_users.login ORDER BY im_users.id, im_users.login;";
+
+//2.) Посчитать то же, что и в п.1, только в деньгах. Т.е на какую сумму скупился каждый юзер.
+//$query = "SELECT im_users.id, im_users.login, SUM(im_prod.price) AS total_price FROM im_users LEFT OUTER JOIN im_orders ON (im_users.id=user_id) LEFT OUTER JOIN im_prod ON (im_orders.prod_id=im_prod.id) WHERE im_users.flag=1 AND im_orders.partn_id=0 GROUP BY im_users.id, im_users.login ORDER BY im_users.id;";
+
+//3.) Посчитать скольким пользователям купил товары каждый из партнеров. При этом - если партнер покупает товар одному и тому же пользователя дважды - это 1-на покупка.
+//$query = "SELECT DISTINCT im_partn.id, im_partn.name, COUNT(im_orders.user_id) AS total_users FROM im_orders LEFT OUTER JOIN im_partn ON (im_orders.partn_id=im_partn.id) WHERE im_partn.id>0 GROUP BY im_partn.id, im_partn.name;";
+
+//4.) Посчитать какую сумму потратил партнер на каждого пользователя.
+//$query = "SELECT im_partn.id, im_partn.name, im_orders.user_id, SUM(im_prod.price) AS total_price FROM im_orders LEFT OUTER JOIN im_partn ON (im_orders.partn_id=im_partn.id) LEFT OUTER JOIN im_prod ON (im_orders.prod_id=im_prod.id) WHERE im_partn.id>0 GROUP BY im_partn.id, im_partn.name, im_orders.user_id ORDER BY im_orders.user_id;";
+
+//5.) Посчитать сколько итого потратил каждый партнер.
+//$query = "SELECT im_partn.id, im_partn.name, SUM(im_prod.price) AS total_price FROM im_orders LEFT OUTER JOIN im_partn ON (im_orders.partn_id=im_partn.id) LEFT OUTER JOIN im_prod ON (im_orders.prod_id=im_prod.id) WHERE im_partn.id>0 GROUP BY im_partn.id, im_partn.name;";
+
 $dbh = null;
 
 
