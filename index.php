@@ -32,20 +32,6 @@ function generateRandomDate($y = 2012, $v = 1) {
     return $result;
 }
 
-//$stmt = $dbh -> prepare("INSERT INTO im_users (id, login, password, date_reg, date_last, ip, flag) VALUES (NULL, :login, :password, :date_reg, :date_last, :ip, :flag);");
-//$stmt->bindParam(':login', $login);
-//$stmt->bindParam(':password', $pass);
-//$stmt->bindParam(':date_reg', $dreg);
-//$stmt->bindParam(':date_last', $dlast);
-//$stmt->bindParam(':ip', $ip);
-//$stmt->bindParam(':flag', $flag);
-//$login = 'adio4';
-//$pass = '4444';
-//$dreg = '2015-01-05 10:00';
-//$dlast = '2015-05-01 11:00';
-//$ip = '127.0.0.1';
-//$flag = 0;
-
 //$stmt->execute();
 
 //echo $dbh ->lastInsertId();
@@ -79,9 +65,34 @@ function generateRandomDate($y = 2012, $v = 1) {
 //$query .= implode(',', $q).";";
 
 //Заполнение таблицы im_prod
-
 //$stmt = $dbh->prepare($query);
 //$r = $stmt->execute();
+
+//Заполнение таблицы im_orders
+//$query = "INSERT INTO im_orders (prod_id, user_id, partn_id) VALUES ";
+//for ($i = 1; $i <= 2000; $i++) {
+//    $prod_id = rand(1, 2);
+//    $user_id = rand(16001, 20000);
+//    $partn_id = rand(0, 10);
+//    $partn = ($partn_id == 0)?'NULL':$partn_id;
+//    $q[] = "($prod_id, $user_id, $partn)";
+//}
+//$query .= implode(',', $q).";";
+
+//Заполнение таблицы im_ug
+//$query = "INSERT INTO im_ug (id, user_id, group_id) VALUES ";
+//for ($i = 150001; $i <= 200000; $i++) {
+//    $g = rand(1, 3);
+//    for ($j = 1; $j <= $g; $j++) {
+//        $l = rand(0, 1);
+//        if ($l) {
+//            $q[] = "(NULL, $i, $j)";
+//        }
+//    }
+//}
+//$query .= implode(',', $q).";";
+//$stmt = $dbh->prepare($query);
+//$stmt->execute();
 
 $dbh = null;
 
